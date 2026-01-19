@@ -11,7 +11,7 @@ from symmer.operators import AntiCommutingOp, PauliwordOp, QuantumState
 def exact_gs_energy(
     sparse_matrix, initial_guess=None, n_particles=None, number_operator=None, n_eigs=6
 ) -> Tuple[float, np.array]:
-    """Return the ground state energy and corresponding ground statevector for the input operator
+    """Return the ground state energy and corresponding ground statevector for the input operator.
 
     Specifying a particle number will restrict to eigenvectors |ψ> such that <ψ|N_op|ψ> = n_particles
     where N_op is the given number operator.
@@ -76,7 +76,7 @@ def exact_gs_energy(
 
 def get_entanglement_entropy(psi: QuantumState, qubits: List[int]) -> float:
     """Get the Von Neumann entropy of the biprtition defined by the specified subsystem
-    qubit indices and those remaining (i.e. those that will be subsequently traced out)
+    qubit indices and those remaining (i.e. those that will be subsequently traced out).
 
     Args:
         psi (QuantumState): the quantum state for which we wish to extract the entanglement entropy
@@ -98,7 +98,7 @@ def random_anitcomm_2n_1_PauliwordOp(
     """Generate a anticommuting PauliOperator of size 2n+1 on n qubits (max possible size)
     with normally distributed coefficients. Generates in structured way then uses Clifford rotation (default)
     to try and make more random (can stop this to allow FAST build, but inherenet structure
-    will be present as operator is formed in specific way!)
+    will be present as operator is formed in specific way!).
 
     Args:
         n_qubits (int): Number of Qubits
@@ -160,7 +160,7 @@ def random_anitcomm_2n_1_PauliwordOp(
 
 
 def tensor_list(factor_list: List[PauliwordOp]) -> PauliwordOp:
-    """Given a list of PauliwordOps, recursively tensor from the right
+    """Given a list of PauliwordOps, recursively tensor from the right.
 
     Args:
         factor_list (list): list of PauliwordOps
@@ -172,7 +172,7 @@ def tensor_list(factor_list: List[PauliwordOp]) -> PauliwordOp:
 
 
 def product_list(product_list: List[PauliwordOp]) -> PauliwordOp:
-    """Given a list of PauliwordOps, recursively take product from the right
+    """Given a list of PauliwordOps, recursively take product from the right.
 
     Args:
         product_list (list): list of PauliwordOps
@@ -187,7 +187,7 @@ def gram_schmidt_from_quantum_state(
     state: Union[np.array, list, QuantumState],
 ) -> np.array:
     """Build a unitary to build a quantum state from the zero state (aka state defines first column of unitary)
-    uses gram schmidt to find other (orthogonal) columns of matrix
+    uses gram schmidt to find other (orthogonal) columns of matrix.
 
     Args:
         state (np.array): 1D array of quantum state (size 2^N qubits)
@@ -233,7 +233,7 @@ def matrix_allclose(
     Args:
         A : matrix A
         B:  matrix B
-        tol: allowed difference
+        tol: allowed difference.
 
     Returns:
         bool
@@ -253,7 +253,7 @@ def matrix_allclose(
 
 
 def get_PauliwordOp_root(power: int, pauli: PauliwordOp) -> PauliwordOp:
-    """Get arbitrary power of a single Pauli operator. See eq1 in https://arxiv.org/pdf/2012.01667.pdf
+    """Get arbitrary power of a single Pauli operator. See eq1 in https://arxiv.org/pdf/2012.01667.pdf.
 
     Log(A) in paper given by = 1j*pi*(I-P)/2 here
 

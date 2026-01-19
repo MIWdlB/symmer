@@ -33,7 +33,7 @@ class MPOOp:
         cls, operator_dict: Dict[str, complex], Dmax: int = None
     ) -> "MPOApproximator":
         """Initalize MPOApproximator using Pauli terms and coefficients stored in
-        a dictionary like {pauli: coeff}
+        a dictionary like {pauli: coeff}.
 
         Args:
             operator_dict (Dict[str, complex]): Dictionary of Pauli string terms and their coefficients.
@@ -94,7 +94,7 @@ def get_MPO(operator: PauliwordOp, max_bond_dimension: int) -> MPOOp:
 
 
 def find_groundstate_quimb(MPOOp: MPOOp, dmrg=None, gs_guess=None) -> QuantumState:
-    """Use quimb's DMRG2 optimiser to approximate groundstate of MPOOp
+    """Use quimb's DMRG2 optimiser to approximate groundstate of MPOOp.
 
     Args:
         MPOOp: MPOOp representing operator.
@@ -153,7 +153,7 @@ def pstrings_to_mpo_optimized(pstrings, coeffs=None, Dmax=None):
     Optimization is achieved by constructing final sum terms directly from:
         1) First letters of each Pauli string for the first term
         2) Last letters of each Pauli string for the last term
-        3) Diagonal matrix per each part of 4D tensor with respective middle letters of Pauli strings
+        3) Diagonal matrix per each part of 4D tensor with respective middle letters of Pauli strings.
 
     Args:
         pstrings (List[str]): List of Pauli Strings
@@ -304,7 +304,7 @@ def truncate_MPO(mpo, Dmax):
 def sum_mpo(mpo1, mpo2):
     """Args:
         mpo1: First Matrix Product Operator (MPO)
-        mpo2: Second Matrix Product Operator (MPO)
+        mpo2: Second Matrix Product Operator (MPO).
 
     Returns:
         summed: Sum of First and Second Matrix Product Operator.

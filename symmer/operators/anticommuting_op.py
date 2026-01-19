@@ -46,7 +46,7 @@ class AntiCommutingOp(PauliwordOp):
 
     @classmethod
     def from_dictionary(cls, operator_dict: Dict[str, complex]) -> "AntiCommutingOp":
-        """Initialize a PauliwordOp from its dictionary representation {pauli:coeff, ...}
+        """Initialize a PauliwordOp from its dictionary representation {pauli:coeff, ...}.
 
         Args:
             operator_dict (Dict[str, complex]): A dictionary representing the operator, where the keys are Pauli strings
@@ -70,7 +70,7 @@ class AntiCommutingOp(PauliwordOp):
 
     def get_least_dense_term_index(self):
         """Takes the current symp_matrix of object and finds the index of the least dense Pauli
-        operator (aka least Pauli matrices). This can be used to define the term to reduce too
+        operator (aka least Pauli matrices). This can be used to define the term to reduce too.
 
         Note one needs to re-run this function if ordering changed (e.g. if lexicographical_sort is run)
 
@@ -156,7 +156,7 @@ class AntiCommutingOp(PauliwordOp):
         float,
         "AntiCommutingOp",
     ]:
-        """Apply unitary partitioning on anticommuting operator (self)
+        """Apply unitary partitioning on anticommuting operator (self).
 
         Args:
             s_index (int): index of row in symplectic matrix that defines Pauli operator to reduce too (Ps).
@@ -225,7 +225,7 @@ class AntiCommutingOp(PauliwordOp):
             return Ps, rotations, gamma_l, self.multiply_by_constant(1 / gamma_l)
 
     def multiply_by_constant(self, constant: float) -> "AntiCommutingOp":
-        """Return AntiCommutingOp under constant multiplication"""
+        """Return AntiCommutingOp under constant multiplication."""
         AC_op_copy = self.copy()
         AC_op_copy.coeff_vec *= constant
         return AC_op_copy
@@ -234,7 +234,7 @@ class AntiCommutingOp(PauliwordOp):
     def random(
         cls, n_qubits: int, n_terms: Union[None, int] = None, apply_clifford=True
     ) -> "AntiCommutingOp":
-        """Generate a random real coefficient anticommuting op"""
+        """Generate a random real coefficient anticommuting op."""
         from symmer.utils import random_anitcomm_2n_1_PauliwordOp
 
         if n_terms is None:
@@ -302,7 +302,7 @@ class AntiCommutingOp(PauliwordOp):
 
 def LCU_as_seq_rot(R_LCU: PauliwordOp) -> List[Tuple[PauliwordOp, float]]:
     """Convert a unitary composed of a
-    See equations 18 and 19 of https://arxiv.org/pdf/1907.09040.pdf
+    See equations 18 and 19 of https://arxiv.org/pdf/1907.09040.pdf.
 
     number of rotations is 2*(R_LCU.n_terms-1), which can at most be 4*n_qubits
 

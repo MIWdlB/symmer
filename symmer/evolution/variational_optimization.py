@@ -28,7 +28,7 @@ class VQE_Driver:
         - symbolic_projector: computes expval by projecting onto +-1 eigenspaces of observable terms
         - observable_rotation: implements the circuit as rotations applied to the observable
         - sparse_array: direct calcaultion by converting observable/state to sparse array
-        - dense_array: direct calcaultion by converting observable/state to dense array
+        - dense_array: direct calcaultion by converting observable/state to dense array.
 
     Attributes:
         expectation_eval (str): expectation value method. Its default value is 'symbolic_direct'.
@@ -436,7 +436,7 @@ class ADAPT_VQE(VQE_Driver):
         target: float = 0,
         target_error: float = 1e-3,
     ):
-        """Perform the ADAPT-VQE optimization
+        """Perform the ADAPT-VQE optimization.
 
         Args:
             gtol: gradient throeshold below which optimization will terminate

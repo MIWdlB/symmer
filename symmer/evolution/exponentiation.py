@@ -6,7 +6,7 @@ from symmer.operators import PauliwordOp
 
 
 def exponentiate_single_Pop(P: PauliwordOp) -> PauliwordOp:
-    """Exponentiate a single Pauli term as e^{P}
+    """Exponentiate a single Pauli term as e^{P}.
 
     If goal is to implement e^{iθP} then coefficient of P must be iθ (note imaginary part must be included in coeff)
 

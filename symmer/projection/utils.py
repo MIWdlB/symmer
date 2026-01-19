@@ -42,7 +42,7 @@ def basis_score(
         - set Hamiltonian cofficients to 1 for unweighted number of commuting terms
         - specify as the SOR Hamiltonian to weight according to second-order response
         - input UCC operator to weight according to coupled-cluster theory <- best performance
-        - if None given then weights by Hamiltonian coefficient magnitude
+        - if None given then weights by Hamiltonian coefficient magnitude.
 
     p determines which norm is used, i.e. lp --> (\sum_{t} |t|^p)^(1/p)
 
@@ -123,7 +123,7 @@ class StabilizerIdentification:
     def symmetry_generators_by_subspace_dimension(self, n_sim_qubits, region=None):
         """Args:
             n_sim_qubits (int): Number of qubits to simulate.
-            region (list[int]): Region
+            region (list[int]): Region.
 
         Returns:
             Symetry generators by subspace dimension.
@@ -283,7 +283,7 @@ def get_noncon_generators_from_commuting_stabilizers(
     return_clique_only: Optional[bool] = False,
 ) -> IndependentOp:
     """Given a set of commuting stabilizers and weighting operator find best noncontextual generating set
-    (ie works out best anticommuting addition to generators that reconstructs most of the weighting_operator)
+    (ie works out best anticommuting addition to generators that reconstructs most of the weighting_operator).
 
     Args:
         stabilizers (PauliwordOp): operator containing commuting symmetries

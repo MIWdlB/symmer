@@ -10,7 +10,7 @@ from .exponentiation import trotter
 
 
 def I(n_qubits: int) -> PauliwordOp:
-    """Identity gate
+    """Identity gate.
 
     Args:
         n_qubits (int): Number of qubits
@@ -22,7 +22,7 @@ def I(n_qubits: int) -> PauliwordOp:
 
 
 def X(n_qubits: int, index: int) -> PauliwordOp:
-    """Pauli X gate
+    """Pauli X gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -37,7 +37,7 @@ def X(n_qubits: int, index: int) -> PauliwordOp:
 
 
 def Y(n_qubits: int, index: int) -> PauliwordOp:
-    """Pauli Y gate
+    """Pauli Y gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -52,7 +52,7 @@ def Y(n_qubits: int, index: int) -> PauliwordOp:
 
 
 def Z(n_qubits: int, index: int) -> PauliwordOp:
-    """Pauli Z gate
+    """Pauli Z gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -67,7 +67,7 @@ def Z(n_qubits: int, index: int) -> PauliwordOp:
 
 
 def Had(n_qubits: int, index: int) -> PauliwordOp:
-    """Hadamard gate
+    """Hadamard gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -82,7 +82,7 @@ def Had(n_qubits: int, index: int) -> PauliwordOp:
 
 
 def CZ(n_qubits: int, control: int, target: int) -> PauliwordOp:
-    """Controlled Z gate
+    """Controlled Z gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -104,7 +104,7 @@ def CZ(n_qubits: int, control: int, target: int) -> PauliwordOp:
 
 
 def CX(n_qubits: int, control: int, target: int) -> PauliwordOp:
-    """Controlled X gate
+    """Controlled X gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -119,7 +119,7 @@ def CX(n_qubits: int, control: int, target: int) -> PauliwordOp:
 
 
 def CY(n_qubits: int, control: int, target: int) -> PauliwordOp:
-    """Controlled Y gate
+    """Controlled Y gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -135,7 +135,7 @@ def CY(n_qubits: int, control: int, target: int) -> PauliwordOp:
 
 
 def RX(n_qubits: int, index: int, angle: float) -> PauliwordOp:
-    """Rotation-X gate
+    """Rotation-X gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -149,7 +149,7 @@ def RX(n_qubits: int, index: int, angle: float) -> PauliwordOp:
 
 
 def RY(n_qubits: int, index: int, angle: float) -> PauliwordOp:
-    """Rotation-Y gate
+    """Rotation-Y gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -163,7 +163,7 @@ def RY(n_qubits: int, index: int, angle: float) -> PauliwordOp:
 
 
 def RZ(n_qubits: int, index: int, angle: float) -> PauliwordOp:
-    """Rotation-Z gate
+    """Rotation-Z gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -177,7 +177,7 @@ def RZ(n_qubits: int, index: int, angle: float) -> PauliwordOp:
 
 
 def U1(n_qubits: int, index: int, angle: float) -> PauliwordOp:
-    """U1 gate
+    """U1 gate.
 
     Args:
         n_qubits (int): Number of qubits.
@@ -191,7 +191,7 @@ def U1(n_qubits: int, index: int, angle: float) -> PauliwordOp:
 
 
 def S(n_qubits: int, index: int) -> PauliwordOp:
-    """S gate
+    """S gate.
 
     Args:
         n_qubits (int): Number of qubits.

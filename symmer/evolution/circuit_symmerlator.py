@@ -8,7 +8,7 @@ from symmer.operators import PauliwordOp
 
 
 class CircuitSymmerlator:
-    """Symmer circuit simulator
+    """Symmer circuit simulator.
 
     Each Clifford gate is expanded as a sequence of pi/2 rotations
     (correct up to some global phase that cancels in the inner product calculation).
@@ -44,7 +44,7 @@ class CircuitSymmerlator:
         }
 
     def get_rotation_string(self, pauli: str, indices: List[int]):
-        """Given a Pauli string and list of corresponding qubit indices, return the PauliwordOp"""
+        """Given a Pauli string and list of corresponding qubit indices, return the PauliwordOp."""
         pauli = list(pauli)
         assert len(pauli) == len(indices), "Number of Paulis and indices do not match"
         assert set(pauli).issubset({"I", "X", "Y", "Z"}), (
@@ -70,25 +70,25 @@ class CircuitSymmerlator:
     #################################################################
 
     def X(self, index: int) -> None:
-        """Pauli iX gate"""
+        """Pauli iX gate."""
         self.sequence.append(
             (self.get_rotation_string("X", [index]), self.pi_2_multiple(+2))
         )
 
     def Y(self, index: int) -> None:
-        """Pauli iY gate"""
+        """Pauli iY gate."""
         self.sequence.append(
             (self.get_rotation_string("Y", [index]), self.pi_2_multiple(+2))
         )
 
     def Z(self, index: int) -> None:
-        """Pauli iZ gate"""
+        """Pauli iZ gate."""
         self.sequence.append(
             (self.get_rotation_string("Z", [index]), self.pi_2_multiple(+2))
         )
 
     def H(self, index: int) -> None:
-        """IH Hadamard gate"""
+        """IH Hadamard gate."""
         self.sequence.append(
             (self.get_rotation_string("Z", [index]), self.pi_2_multiple(+2))
         )
@@ -97,37 +97,37 @@ class CircuitSymmerlator:
         )
 
     def S(self, index: int) -> None:
-        """√(+i)S gate"""
+        """√(+i)S gate."""
         self.sequence.append(
             (self.get_rotation_string("Z", [index]), self.pi_2_multiple(+1))
         )
 
     def Sdag(self, index: int) -> None:
-        """-√(-i)S† gate"""
+        """-√(-i)S† gate."""
         self.sequence.append(
             (self.get_rotation_string("Z", [index]), self.pi_2_multiple(+3))
         )
 
     def sqrtX(self, index: int) -> None:
-        """√(iX) gate"""
+        """√(iX) gate."""
         self.sequence.append(
             (self.get_rotation_string("X", [index]), self.pi_2_multiple(+1))
         )
 
     def sqrtY(self, index: int) -> None:
-        """√(iY) gate"""
+        """√(iY) gate."""
         self.sequence.append(
             (self.get_rotation_string("Y", [index]), self.pi_2_multiple(+1))
         )
 
     def sqrtZ(self, index: int) -> None:
-        """√(iZ) gate"""
+        """√(iZ) gate."""
         self.sequence.append(
             (self.get_rotation_string("Z", [index]), self.pi_2_multiple(+1))
         )
 
     def CX(self, control: int, target: int) -> None:
-        """√(-i)CX gate"""
+        """√(-i)CX gate."""
         self.sequence.append(
             (self.get_rotation_string("ZX", [control, target]), self.pi_2_multiple(+1))
         )
@@ -139,7 +139,7 @@ class CircuitSymmerlator:
         )
 
     def CY(self, control: int, target: int) -> None:
-        """√(-i)CY gate"""
+        """√(-i)CY gate."""
         self.sequence.append(
             (self.get_rotation_string("ZY", [control, target]), self.pi_2_multiple(+1))
         )
@@ -151,7 +151,7 @@ class CircuitSymmerlator:
         )
 
     def CZ(self, control: int, target: int) -> None:
-        """√(-i)CZ gate"""
+        """√(-i)CZ gate."""
         self.sequence.append(
             (self.get_rotation_string("ZZ", [control, target]), self.pi_2_multiple(+1))
         )
@@ -163,7 +163,7 @@ class CircuitSymmerlator:
         )
 
     def SWAP(self, qubit_1: int, qubit_2: int) -> None:
-        """Swap qubits 1 and 2"""
+        """Swap qubits 1 and 2."""
         self.CX(qubit_1, qubit_2)
         self.CX(qubit_2, qubit_1)
         self.CX(qubit_1, qubit_2)
@@ -174,27 +174,27 @@ class CircuitSymmerlator:
     #################################################################
 
     def R(self, pauli: str, indices: List[int], angle: float) -> None:
-        """Arbitrary rotation gate"""
+        """Arbitrary rotation gate."""
         self.sequence.append((self.get_rotation_string(pauli, indices), -angle))
 
     def RX(self, index: int, angle: float) -> None:
-        """Pauli X rotation"""
+        """Pauli X rotation."""
         self.R("X", [index], angle)
 
     def RY(self, index: int, angle: float) -> None:
-        """Pauli Y rotation"""
+        """Pauli Y rotation."""
         self.R("Y", [index], angle)
 
     def RZ(self, index: int, angle: float) -> None:
-        """Pauli Z rotation"""
+        """Pauli Z rotation."""
         self.R("Z", [index], angle)
 
     def T(self, index: int, angle: float) -> None:
-        """T gate"""
+        """T gate."""
         raise NotImplementedError()
 
     def Toffoli(self, control_1: int, control_2: int, target: int) -> None:
-        """Doubly-controlled X gate"""
+        """Doubly-controlled X gate."""
         raise NotImplementedError()
 
     #################################################################
@@ -202,14 +202,14 @@ class CircuitSymmerlator:
     #################################################################
 
     def apply_sequence(self, operator: PauliwordOp) -> PauliwordOp:
-        """Apply the stored sequence of rotations on the input operator"""
+        """Apply the stored sequence of rotations on the input operator."""
         assert operator.n_qubits == self.n_qubits, (
             "The operator is defined over a different number of qubits"
         )
         return operator.perform_rotations(self.sequence[::-1])
 
     def evaluate(self, operator: PauliwordOp) -> float:
-        """Evaluate the stored rotations on the input operator"""
+        """Evaluate the stored rotations on the input operator."""
         rotated_op = self.apply_sequence(operator)
         expval = 0
         for rotated_str, coeff in rotated_op.to_dictionary.items():
@@ -219,16 +219,15 @@ class CircuitSymmerlator:
 
     @classmethod
     def from_qasm(cls, qasm: str, angle_factor: int = 1) -> "CircuitSymmerlator":
-        """Initialize the simulator from a QASM circuit"""
+        """Initialize the simulator from a QASM circuit."""
         instructions = qasm.split(";\n")[:-1]
-        qasm_version = instructions.pop(0)
-        inclusions = instructions.pop(0)
+        instructions.pop(0)
+        instructions.pop(0)
         registers = instructions.pop(0)
         # n_qubits     = int(registers.split(' ')[1][2:-1])
         n_qubits = int(re.findall(r"\d+", registers)[0])
 
         self = cls(n_qubits)
-        pi = np.pi  # for evaluating strings like '3*pi/2'
         for step in instructions:
             gate_qubits = step.split(" ")
             gate = gate_qubits[0]
@@ -249,5 +248,5 @@ class CircuitSymmerlator:
 
     @classmethod
     def from_qiskit(cls, circuit: QuantumCircuit) -> "CircuitSymmerlator":
-        """Initialize the simulator from a Qiskit QuantumCircuit"""
+        """Initialize the simulator from a Qiskit QuantumCircuit."""
         return cls.from_qasm(qasm3.dumps(circuit.reverse_bits()), angle_factor=-1)

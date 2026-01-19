@@ -1,8 +1,12 @@
+
 [project]
 name = "symmer"
 version = "0.0.10"
 description = " An efficient Python-based framework for implementing qubit subspace methods, reducing the resource requirements for near-term quantum simulations."
-authors = ["AlexisRalli <rallilex@hotmail.co.uk>", "TimWeaving <weaving.timothy@gmail.com>"]
+authors = [
+    {name="AlexisRalli", email="rallilex@hotmail.co.uk"},
+    {name="Tim Weaving", email="weaving.timothy@gmail.com"},
+]
 requires-python = ">=3.11, <4"
 license = "MIT"
 dependencies = [
@@ -14,6 +18,10 @@ dependencies = [
     "qiskit>=2.3.0",
     "quimb>=1.12.1",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [

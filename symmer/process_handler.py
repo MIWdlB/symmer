@@ -24,7 +24,7 @@ class ProcessHandler:
         self.n_logical_cores = os.cpu_count()
 
     def prepare_chunks(self, iter):
-        """Split a list into smaller sized chunks"""
+        """Split a list into smaller sized chunks."""
         iter = list(iter)
         self.n_chunks = min(len(iter), self.n_logical_cores)
         chunk_size = int(np.ceil(len(iter) / self.n_chunks))
@@ -33,7 +33,7 @@ class ProcessHandler:
             yield iter[i:j]
 
     def _process_ray(self, func, iter, shared):
-        """Helper function for ray processing"""
+        """Helper function for ray processing."""
         warn(
             "ray is being deprecated in symmer and is no longer a dependency - must install ray manually to use."
         )
@@ -66,7 +66,7 @@ class ProcessHandler:
         return [a for b in results for a in b]
 
     def _process_mp(self, func, iter, shared):
-        """Helper function for multiprocessing"""
+        """Helper function for multiprocessing."""
         if self.verbose:
             print("*** executing in multiprocessing mode ***")
 
@@ -97,14 +97,15 @@ class ProcessHandler:
         return data
 
     def _process_single(self, func, iter, shared):
-        """Helper function for single threading"""
+        """Helper function for single threading."""
         if self.verbose:
             print("*** executing in single-threaded mode ***")
         return func(iter, shared)
 
     def parallelize(self, func):
         def wrapper(iter, shared):
-            _func = lambda iter, shared: [func(i, shared) for i in iter]
+            def _func(iter, shared):
+                return [func(i, shared) for i in iter]
 
             if self.method == "mp":
                 return self._process_mp(_func, iter, shared)

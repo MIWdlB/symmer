@@ -17,7 +17,7 @@ from .utils import perform_noncontextual_sweep
 
 
 class NoncontextualOp(PauliwordOp):
-    """Class for representing noncontextual Hamiltonians
+    """Class for representing noncontextual Hamiltonians.
 
     Noncontextual Hamiltonians are precisely those whose terms may be reconstructed
     under the Jordan product (AB = {A, B}/2) from a generating set of the form
@@ -127,7 +127,7 @@ class NoncontextualOp(PauliwordOp):
         adds to a tracking list and then changes the original ordering so first term is now at the end
         repeats from the start (aka generating a list of possible noncon Hamiltonians)
         from this list one can then choose the noncon op with the most terms OR largest sum of abs coeff weights
-        cutoff time ensures if the number of possibilities is large the function will STOP and not take too long
+        cutoff time ensures if the number of possibilities is large the function will STOP and not take too long.
 
         Args:
             H (PauliwordOp): PauliwordOp representing the operator.
@@ -228,7 +228,7 @@ class NoncontextualOp(PauliwordOp):
     def _from_generators_noncontextual_op(
         cls, H: PauliwordOp, generators: PauliwordOp, use_jordan_product: bool = False
     ) -> "NoncontextualOp":
-        """Construct a noncontextual operator given a noncontextual generating set, via the Jordan product ( regular matrix product if the operators commute, and equal to zero if the operators anticommute.)
+        """Construct a noncontextual operator given a noncontextual generating set, via the Jordan product ( regular matrix product if the operators commute, and equal to zero if the operators anticommute.).
 
         Args:
             H (PauliwordOp): PauliwordOp representing the Hamiltonian.
@@ -297,7 +297,7 @@ class NoncontextualOp(PauliwordOp):
             n_commuting_terms = 0
 
         if remaining_qubits >= 1:
-            if n_commuting_terms == None:
+            if n_commuting_terms is None:
                 n_commuting_terms = 2 ** (remaining_qubits)
                 XZ_block = (
                     (
@@ -571,19 +571,18 @@ class NoncontextualOp(PauliwordOp):
         # individual elements of r_part commute with all of G_part - taking products over G_part with
         # a single element of r_part will therefore never produce a complex phase, but might result in
         # a sign flip that must be accounted for in the generator reconstruction:
-        multiply_indices = (
-            lambda inds: reduce(
-                lambda x, y: x * y,  # pairwise multiplication of Pauli factors
-                noncon_generators[
-                    inds
-                ],  # index the relevant noncontextual generating elements
-                PauliwordOp.from_list(
-                    ["I" * self.n_qubits]
-                ),  # initialise product with identity
-            )
-            .coeff_vec[0]
-            .real
-        )
+        def multiply_indices(inds):
+            return (reduce(
+                        lambda x, y: x * y,  # pairwise multiplication of Pauli factors
+                        noncon_generators[
+                            inds
+                        ],  # index the relevant noncontextual generating elements
+                        PauliwordOp.from_list(
+                            ["I" * self.n_qubits]
+                        ),  # initialise product with identity
+                    )
+                    .coeff_vec[0]
+                    .real)
 
         self.pauli_mult_signs = np.array(
             list(map(multiply_indices, jordan_recon_matrix.astype(bool)))
@@ -663,7 +662,7 @@ class NoncontextualOp(PauliwordOp):
 
     def noncon_state(self, UP_method="LCU") -> Tuple[QuantumState, np.array]:
         """Method to generate noncontextual state for current symmetry generators assignments. Note by default
-        UP_method is set to LCU as this avoids generating exponentially large states (which seq_rot can do!)
+        UP_method is set to LCU as this avoids generating exponentially large states (which seq_rot can do!).
 
         Args:
             UP_method: string of unitary partitioning approach.

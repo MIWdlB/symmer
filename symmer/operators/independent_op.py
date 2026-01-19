@@ -79,7 +79,7 @@ class IndependentOp(PauliwordOp):
 
     @classmethod
     def from_dictionary(cls, operator_dict: Dict[str, complex]) -> "IndependentOp":
-        """Initialize a PauliwordOp from its dictionary representation {pauli:coeff, ...}
+        """Initialize a PauliwordOp from its dictionary representation {pauli:coeff, ...}.
 
         Args:
             operator_dict (Dict[str, complex]): Dictionary representation of IndependentOp
@@ -99,7 +99,7 @@ class IndependentOp(PauliwordOp):
     ) -> "IndependentOp":
         """Identify a symmetry basis for the supplied Pauli operator with
         symplectic representation  M = [ X | Z ]. We perform columnwise
-        Gaussian elimination to yield the matrix
+        Gaussian elimination to yield the matrix.
 
                 [ Z | X ]     [ R ]
                 |-------| ->  |---|
@@ -160,19 +160,19 @@ class IndependentOp(PauliwordOp):
             )
 
     def _check_stab(self) -> None:
-        """Checks the stabilizer coefficients are +/-1"""
+        """Checks the stabilizer coefficients are +/-1."""
         if not set(self.coeff_vec).issubset({0, +1, -1}):
             raise ValueError(f"Stabilizer coefficients not +/-1: {self.coeff_vec}")
 
     def _check_independent(self) -> None:
-        """Check the supplied stabilizers are algebraically independent"""
+        """Check the supplied stabilizers are algebraically independent."""
         if not check_independent(self):
             # there is a dependent row
             raise ValueError("The supplied stabilizers are not independent")
 
     def __str__(self) -> str:
         """Defines the print behaviour of IndependentOp -
-        returns the operator in an easily readable format
+        returns the operator in an easily readable format.
 
         Returns:
             out_string (str): human-readable IndependentOp string

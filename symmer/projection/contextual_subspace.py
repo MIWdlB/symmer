@@ -347,7 +347,7 @@ class ContextualSubspace(S3Projection):
             return cs_operator
 
     def project_state(self, state_to_project: QuantumState = None) -> QuantumState:
-        """Project a QuantumState into the contextual subspace
+        """Project a QuantumState into the contextual subspace.
 
         Args:
             state_to_project (QuantumState): Quantum State to be projected into the contextual subspace. By default, it is set to None.

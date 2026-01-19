@@ -79,7 +79,7 @@ def numba_dot_matmal_GF2(A, B):
 
 
 def symplectic_to_string(symp_vec) -> str:
-    """Returns string form of symplectic vector defined as (X | Z)
+    """Returns string form of symplectic vector defined as (X | Z).
 
     Args:
         symp_vec (array): symplectic Pauliword array
@@ -142,7 +142,7 @@ def symplectic_to_openfermion(symp_vec, coeff) -> str:
 def string_to_symplectic(pauli_str, n_qubits):
     """Args:
         pauli_str (str): Pauli String to be converted to symplectic array
-        n_qubits (int): Number of qubits
+        n_qubits (int): Number of qubits.
 
     Returns:
         symp_vec (array): symplectic Pauliword array
@@ -169,7 +169,7 @@ def string_to_symplectic(pauli_str, n_qubits):
 
 
 def count1_in_int_bitstring(i):
-    """Count number of "1" bits in integer i to be thought of in binary representation
+    """Count number of "1" bits in integer i to be thought of in binary representation.
 
     https://stackoverflow.com/questions/109023/how-to-count-the-number-of-set-bits-in-a-32-bit-integer#109025
     https://web.archive.org/web/20151229003112/http://blogs.msdn.com/b/jeuge/archive/2005/06/08/hakmem-bit-count.aspx
@@ -187,7 +187,7 @@ def count1_in_int_bitstring(i):
 
 def symplectic_to_sparse_matrix(symp_vec, coeff) -> sp.sparse.csr_matrix:
     """Returns (2**n x 2**n) matrix of paulioperator kronector product together
-     defined from symplectic vector defined as (X | Z)
+     defined from symplectic vector defined as (X | Z).
 
     This follows because tensor products of Pauli operators are one-sparse: they each have only
     one nonzero entry in each row and column
@@ -235,7 +235,7 @@ def symplectic_cleanup(
     symp_matrix: np.array, coeff_vec: np.array, zero_threshold: float = None
 ) -> Tuple[np.array, np.array]:
     """Remove duplicated rows of symplectic matrix terms, whilst summing
-    the corresponding coefficients of the deleted rows in coeff_vec
+    the corresponding coefficients of the deleted rows in coeff_vec.
 
     Args:
         symp_matrix (np.array): Symplectic matrix.
@@ -282,7 +282,7 @@ def symplectic_cleanup(
 
 def random_symplectic_matrix(n_qubits, n_terms, diagonal=False, density=0.3):
     """Generates a random binary matrix of dimension (n_terms) x (2*n_qubits)
-    Specifying diagonal=True will set the left hand side (X_block) to all zeros
+    Specifying diagonal=True will set the left hand side (X_block) to all zeros.
     """
     if diagonal:
         Z_block = np.random.choice(
@@ -367,7 +367,7 @@ def cref_binary(matrix: np.array) -> np.array:
 
 
 def QubitOperator_to_dict(op: QubitOperator, num_qubits: int):
-    """OpenFermion
+    """OpenFermion.
 
     Args:
         op (QubitOperator): Qubit Operator
@@ -392,7 +392,7 @@ def QubitOperator_to_dict(op: QubitOperator, num_qubits: int):
 
 
 def SparsePauliOp_to_dict(op: SparsePauliOp) -> dict:
-    """Qiskit
+    """Qiskit.
 
     Args:
         op (SparsePauliOp): Pauli Sum Operator
@@ -534,7 +534,7 @@ def check_independent(operators):
 
 def check_jordan_independent(operators):
     """Check if the input PauliwordOp contains algebraically dependent terms under jordan product
-    (note input can be noncontextual, but contain dependent terms!)
+    (note input can be noncontextual, but contain dependent terms!).
 
     Args:
         operators (PauliwordOp): Operators.
@@ -608,7 +608,7 @@ def check_adjmat_noncontextual(adjmat) -> bool:
 
 
 def perform_noncontextual_sweep(operator) -> "PauliwordOp":
-    """Given an ordered operator, sweep over its terms once in order keeping terms that are noncontextual
+    """Given an ordered operator, sweep over its terms once in order keeping terms that are noncontextual.
 
     Args:
         operator (PauliwordOp): Ordered operator.

@@ -9,7 +9,7 @@ from symmer.projection import CS_VQE, QubitTapering
 
 
 def check_path_to_dir(potential_path: str) -> str:
-    """Checks if path is a directory
+    """Checks if path is a directory.
 
     Args:
         potential_path (str): path to directory
@@ -23,7 +23,7 @@ def check_path_to_dir(potential_path: str) -> str:
 
 
 def check_path_to_file(potential_path: str) -> str:
-    """Checks if path gives a file
+    """Checks if path gives a file.
 
     Args:
         potential_path (str): path to directory
@@ -130,7 +130,7 @@ def command_interface():
 
 
 def cli() -> None:
-    """Command line interface"""
+    """Command line interface."""
     args = command_interface()
 
     output_data = {}

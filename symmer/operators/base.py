@@ -186,7 +186,7 @@ class PauliwordOp:
 
     @classmethod
     def from_dictionary(cls, operator_dict: Dict[str, complex]) -> "PauliwordOp":
-        """Initialize a PauliwordOp from its dictionary representation {pauli:coeff, ...}
+        """Initialize a PauliwordOp from its dictionary representation {pauli:coeff, ...}.
 
         Args:
             operator_dict (Dict[str, complex]): A dictionary representing the PauliwordOp.
@@ -235,7 +235,7 @@ class PauliwordOp:
 
     @classmethod
     def empty(cls, n_qubits: int) -> "PauliwordOp":
-        """Initialize an empty PauliwordOp of the form 0 * I...I
+        """Initialize an empty PauliwordOp of the form 0 * I...I.
 
         Args:
             n_qubits (int): The number of qubits.
@@ -256,7 +256,7 @@ class PauliwordOp:
         """Args:
             n_qubits (int): The number of qubits.
             operator_basis (PauliwordOp, optional): The operator basis to use. Default is 'None'.
-            disable_loading_bar (bool) : whether to have loading bar when constructing operator
+            disable_loading_bar (bool) : whether to have loading bar when constructing operator.
 
         Returns:
             PauliwordOp: A new PauliwordOp object.
@@ -303,7 +303,7 @@ class PauliwordOp:
         """Args:
             matrix (Union[np.array, csr_matrix]): The matrix to decompose.
             n_qubits (int): The number of qubits.
-            disable_loading_bar (bool) : whether to have loading bar when constructing operator
+            disable_loading_bar (bool) : whether to have loading bar when constructing operator.
 
         Returns:
             PauliwordOp: A new PauliwordOp object representing the decomposition of the matrix using projectors.
@@ -414,7 +414,7 @@ class PauliwordOp:
         disable_loading_bar: Optional[bool] = False,
     ) -> "PauliwordOp":
         """--------------
-        | strategies |
+        | strategies |.
         --------------
 
         - full_basis
@@ -474,7 +474,7 @@ class PauliwordOp:
 
     def __str__(self) -> str:
         """Defines the print behaviour of PauliwordOp -
-        returns the operator in an easily readable format
+        returns the operator in an easily readable format.
 
         Returns:
             out_string (str): human-readable PauliwordOp string
@@ -492,11 +492,11 @@ class PauliwordOp:
         return str(self)
 
     def copy(self) -> "PauliwordOp":
-        """Create a carbon copy of the class instance"""
+        """Create a carbon copy of the class instance."""
         return deepcopy(self)
 
     def sort(self, by: str = "magnitude", key: str = "decreasing") -> "PauliwordOp":
-        """Sort the terms either by magnitude, weight X, Y or Z
+        """Sort the terms either by magnitude, weight X, Y or Z.
 
         Args:
             by (str, optional): The criterion for sorting. Options are 'magnitude', 'weight', 'support', 'X', 'Y', 'Z'. Defaults to 'magnitude'.
@@ -591,7 +591,7 @@ class PauliwordOp:
         """Simultaneously reconstruct every operator term in the supplied basis.
         With B and M the symplectic form of the supplied basis and the internal
         Pauli operator, respectively, we perform columnwise Gaussian elimination
-        to yield the matrix
+        to yield the matrix.
 
                 [ B ]     [ I | 0 ]
                 |---| ->  |-------|
@@ -626,7 +626,7 @@ class PauliwordOp:
 
     def jordan_generator_reconstruction(self, generators: "PauliwordOp"):
         """Reconstruct this PauliwordOp under the Jordan product PQ = {P,Q}/2
-        with respect to the supplied generators
+        with respect to the supplied generators.
 
         Args:
             generators (PauliwordOp): The basis operators for reconstruction.
@@ -676,7 +676,7 @@ class PauliwordOp:
 
     @cached_property
     def Y_count(self) -> np.array:
-        """Count the qubit positions of each term set to Pauli Y
+        """Count the qubit positions of each term set to Pauli Y.
 
         cached_property means this only runs once and then is stored
         as self.Y_count
@@ -711,7 +711,7 @@ class PauliwordOp:
     def __eq__(self, Pword: "PauliwordOp") -> bool:
         """In theory should use logical XNOR to check symplectic matrix match, however
         can use standard logical XOR and look for False indices instead (implementation
-        skips an additional NOT operation)
+        skips an additional NOT operation).
 
         Args:
             Pword (PauliwordOp): The PauliwordOp object to compare with.
@@ -996,7 +996,7 @@ class PauliwordOp:
 
     def commutes_termwise(self, PwordOp: "PauliwordOp") -> np.array:
         """Outputs an array in which rows correspond with terms of the internal PauliwordOp (self)
-        and colummns of Pword - True where terms commute and False if anticommutes
+        and colummns of Pword - True where terms commute and False if anticommutes.
 
         **example
         op1 = PauliwordOp(['XYXZ', 'YYII'], [1,1])
@@ -1042,7 +1042,7 @@ class PauliwordOp:
 
     def qubitwise_commutes_termwise(self, PwordOp: "PauliwordOp") -> np.array:
         """Given the symplectic representation of a single Pauli operator,
-        determines which operator terms of the internal PauliwordOp qubitwise commute
+        determines which operator terms of the internal PauliwordOp qubitwise commute.
 
         Args:
             PwordOp (PauliwordOp): The PauliwordOp to check for qubitwise term-wise commutation.
@@ -1135,7 +1135,7 @@ class PauliwordOp:
     ) -> "PauliwordOp":
         r"""Let R(t) = e^{i t/2 Q} = cos(t/2)*I + i*sin(t/2)*Q, then one of the following can occur:
         R(t) P R^\dag(t) = P when [P,Q] = 0
-        R(t) P R^\dag(t) = cos(t) P + sin(t) (-iPQ) when {P,Q} = 0
+        R(t) P R^\dag(t) = cos(t) P + sin(t) (-iPQ) when {P,Q} = 0.
 
         This operation is Clifford when t=pi/2, since cos(pi/2) P - sin(pi/2) iPQ = -iPQ.
         For t!=pi/2 an increase in the number of terms can be observed (non-Clifford unitary).
@@ -1467,7 +1467,7 @@ class PauliwordOp:
     @cached_property
     def to_dictionary(self) -> Dict[str, complex]:
         """Method for converting the operator from the symplectic representation
-        to a dictionary of the form {P_string:coeff, ...}
+        to a dictionary of the form {P_string:coeff, ...}.
 
         Returns:
             dict: The dictionary representation of the operator in the form {P_string: coeff, ...}.
@@ -1499,7 +1499,7 @@ class PauliwordOp:
 
     @cached_property
     def generators(self) -> "PauliwordOp":
-        """Find an independent generating set for input Pauli operator
+        """Find an independent generating set for input Pauli operator.
 
         Args:
             op (PauliwordOp): operator to find symmetry basis for
@@ -1524,7 +1524,7 @@ class PauliwordOp:
 
     @cached_property
     def to_sparse_matrix(self) -> csr_matrix:
-        """Returns (2**n x 2**n) matrix of PauliwordOp where each Pauli operator has been kronector producted together
+        """Returns (2**n x 2**n) matrix of PauliwordOp where each Pauli operator has been kronector producted together.
 
         This follows because tensor products of Pauli operators are one-sparse: they each have only
         one nonzero entry in each row and column
@@ -1548,7 +1548,7 @@ class PauliwordOp:
         return csr_matrix((data, indices, indptr), shape=(side, side))
 
     def conjugate_op(self, R: "PauliwordOp") -> "PauliwordOp":
-        """For a defined linear combination of pauli operators : R = ∑_{𝑖} ci Pi ... (note each P self-adjoint!)
+        """For a defined linear combination of pauli operators : R = ∑_{𝑖} ci Pi ... (note each P self-adjoint!).
 
         perform the adjoint rotation R self R† =  R [∑_{a} ca Pa] R†
 
@@ -1711,7 +1711,7 @@ class QuantumState:
 
     @classmethod
     def zero(cls, n_qubits: int, vec_type: str = "ket") -> "QuantumState":
-        """Generate the all zero state on N qubits
+        """Generate the all zero state on N qubits.
 
         Args:
             n_qubits: number of qubits
@@ -1727,7 +1727,7 @@ class QuantumState:
         return q_zero_state
 
     def __str__(self) -> str:
-        """Defines the print behaviour of QuantumState - differs depending on vec_type
+        """Defines the print behaviour of QuantumState - differs depending on vec_type.
 
         Returns:
             out_string (str): human-readable QuantumState string
@@ -2034,7 +2034,7 @@ class QuantumState:
     @cached_property
     def to_dense_matrix(self):
         """Returns:
-        dense_Qstate (ndarray): dense matrix representation of the statevector
+        dense_Qstate (ndarray): dense matrix representation of the statevector.
         """
         return self.to_sparse_matrix.toarray()
 
@@ -2057,7 +2057,7 @@ class QuantumState:
 
     def get_rdm(self, qubits: List[int] = []) -> np.ndarray:
         """Return the reduced density matrix of the specified qubit positions,
-        corresponding with a partial trace over the complementary qubit indices
+        corresponding with a partial trace over the complementary qubit indices.
 
         Args:
             qubits (List[int]): qubit indicies to preserve
@@ -2160,7 +2160,7 @@ class QuantumState:
         statevector: np.array,
         threshold: float = 1e-15,
     ) -> "QuantumState":
-        """Initialize a QubitState from a vector of 2^N elements over N qubits
+        """Initialize a QubitState from a vector of 2^N elements over N qubits.
 
         Args:
             statevector (np.array): numpy array of quantum state (size 2^N by 1)
@@ -2212,7 +2212,7 @@ class QuantumState:
     def measure_state_in_computational_basis(
         self, P_op: PauliwordOp
     ) -> Tuple["QuantumState", PauliwordOp]:
-        """Perform change of basis to measure input Pauli operator in the computational basis
+        """Perform change of basis to measure input Pauli operator in the computational basis.
 
         <self| P_op |self> == <psi_new_basis | Z_new | psi_new_basis>
 
@@ -2401,7 +2401,7 @@ def get_ij_operator(
     binary_vec: np.ndarray = None,
     return_operator: bool = True,
 ) -> Union["PauliwordOp", Tuple[np.ndarray, np.ndarray]]:
-    """Get the Pauli operator for the projector: |i> <j|
+    """Get the Pauli operator for the projector: |i> <j|.
 
     Args:
         i (int): ket of projector
@@ -2501,7 +2501,7 @@ def get_ij_operator(
 
 
 def single_term_expval(P_op: PauliwordOp, psi: QuantumState) -> float:
-    """Expectation value calculation for a single Pauli operator given a QuantumState psi
+    """Expectation value calculation for a single Pauli operator given a QuantumState psi.
 
     Scales linearly in the number of basis states of psi, versus the quadratic cost of
     evaluating <psi|P|psi> directly, taking into consideration all of the cross-terms.
@@ -2527,9 +2527,10 @@ def single_term_expval(P_op: PauliwordOp, psi: QuantumState) -> float:
 
     # function that applies the projector onto the ±1 eigenspace of P
     # (given by the operator (I±P)/2) and returns norm of the resulting state
-    norm_ev = lambda ev: np.linalg.norm(
-        (PauliwordOp(proj_symplectic, [0.5, 0.5 * ev]) * psi).state_op.coeff_vec
-    )
+    def norm_ev(ev):
+        return np.linalg.norm(
+            (PauliwordOp(proj_symplectic, [0.5, 0.5 * ev]) * psi).state_op.coeff_vec
+        )
     # difference of norms provides a metric for which eigenvalue is dominant within
     # the provided reference state (e.g. if inputting a ±1 eigenvector then diff=±1)
     return (norm_ev(+1) ** 2 - norm_ev(-1) ** 2).real
@@ -2537,7 +2538,7 @@ def single_term_expval(P_op: PauliwordOp, psi: QuantumState) -> float:
 
 def change_of_basis_XY_to_Z(P_op: PauliwordOp) -> PauliwordOp:
     """Get PauliwordOp representing H and Sdagger dates required to measure a PauliwordOp in the
-    computational basis
+    computational basis.
 
     Args:
         P_op (PauliwordOp): PauliwordOp to measure in computational basis
