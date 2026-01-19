@@ -4,7 +4,7 @@ from typing import List
 import numpy as np
 from qiskit import QuantumCircuit, qasm3
 
-from symmer import PauliwordOp
+from symmer.operators import PauliwordOp
 
 
 class CircuitSymmerlator:

@@ -1,7 +1,8 @@
 import numpy as np
 
-from symmer.evolution import trotter
 from symmer.operators import PauliwordOp
+
+from .exponentiation import trotter
 
 #############################################
 # Gate library decomposed into PauliwordOps #

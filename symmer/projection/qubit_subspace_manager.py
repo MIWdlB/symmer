@@ -5,8 +5,10 @@ import numpy as np
 
 from symmer.approximate import find_groundstate_quimb, get_MPO
 from symmer.operators import PauliwordOp, QuantumState
-from symmer.projection import ContextualSubspace, QubitTapering
 from symmer.utils import exact_gs_energy
+
+from .contextual_subspace import ContextualSubspace
+from .qubit_tapering import QubitTapering
 
 
 class QubitSubspaceManager:

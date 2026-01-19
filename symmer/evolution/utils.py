@@ -7,7 +7,7 @@ from networkx import Graph, draw_spring
 from networkx.algorithms.isomorphism.isomorphvf2 import GraphMatcher
 from qiskit import QuantumCircuit
 
-from symmer import PauliwordOp
+from symmer.operators import PauliwordOp
 
 
 def get_CNOT_connectivity_graph(

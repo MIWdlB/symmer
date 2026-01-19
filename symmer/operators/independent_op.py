@@ -4,14 +4,14 @@ from typing import Dict, List, Tuple, Union
 
 import numpy as np
 
-from symmer import process
-from symmer.operators import (
+from ..process_handler import process
+from .base import (
     PauliwordOp,
     QuantumState,
     single_term_expval,
     symplectic_to_string,
 )
-from symmer.operators.utils import _cref_binary, check_independent
+from .utils import _cref_binary, check_independent
 
 
 class IndependentOp(PauliwordOp):

@@ -3,6 +3,6 @@
 import warnings
 
 warnings.filterwarnings("ignore", module="cotengra")
-from symmer.operators import PauliwordOp, QuantumState
-from symmer.process_handler import process
-from symmer.projection import ContextualSubspace, QubitSubspaceManager, QubitTapering
+from .operators import PauliwordOp, QuantumState
+from .process_handler import process
+from .projection import ContextualSubspace, QubitSubspaceManager, QubitTapering

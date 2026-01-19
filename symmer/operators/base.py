@@ -14,8 +14,8 @@ from scipy.sparse import coo_matrix, csc_matrix, csr_matrix, dok_matrix
 from scipy.stats import unitary_group
 from tqdm.auto import tqdm
 
-from symmer import process
-from symmer.operators.utils import (
+from ..process_handler import process
+from .utils import (
     QubitOperator_to_dict,
     SparsePauliOp_to_dict,
     binary_array_to_int,

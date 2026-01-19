@@ -11,14 +11,15 @@ from scipy.optimize import minimize
 from scipy.sparse import csc_array
 
 from symmer import PauliwordOp, QuantumState, process
-from symmer.evolution import (
-    PauliwordOp_to_QuantumCircuit,
-    topology_match_score,
-)
 from symmer.operators.utils import (
     safe_QuantumState_to_dict,
     symplectic_to_string,
 )
+
+from .decomposition import (
+    PauliwordOp_to_QuantumCircuit,
+)
+from .utils import topology_match_score
 
 
 class VQE_Driver:

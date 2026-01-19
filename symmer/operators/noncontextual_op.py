@@ -8,10 +8,12 @@ import networkx as nx
 import numpy as np
 from scipy.optimize import shgo
 
-from symmer import process
-from symmer.operators import AntiCommutingOp, IndependentOp, PauliwordOp, QuantumState
-from symmer.operators.utils import perform_noncontextual_sweep
-from symmer.utils import random_anitcomm_2n_1_PauliwordOp
+from ..process_handler import process
+from ..utils import random_anitcomm_2n_1_PauliwordOp
+from .anticommuting_op import AntiCommutingOp
+from .base import PauliwordOp, QuantumState
+from .independent_op import IndependentOp
+from .utils import perform_noncontextual_sweep
 
 
 class NoncontextualOp(PauliwordOp):

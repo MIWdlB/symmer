@@ -3,7 +3,7 @@ from typing import Dict, List, Optional, Tuple, Union
 
 import numpy as np
 
-from symmer.operators import PauliwordOp
+from .base import PauliwordOp
 
 warnings.simplefilter("always", UserWarning)
 

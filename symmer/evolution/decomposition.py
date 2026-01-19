@@ -4,8 +4,9 @@ from typing import Dict, List
 
 from qiskit.circuit import ParameterVector, QuantumCircuit
 
-from symmer.evolution.gate_library import *
 from symmer.operators import PauliwordOp, QuantumState
+
+from .gate_library import *
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
