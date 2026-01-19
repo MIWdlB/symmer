@@ -186,6 +186,9 @@ target/
 
 # IPython
 
+# Lock files (covers all below)
+*.lock
+
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
@@ -670,4 +673,3 @@ notebooks/data/*
 !notebooks/data/molecule_data.json
 notebooks/plots/*
 notebooks/sandbox.ipynb
-
