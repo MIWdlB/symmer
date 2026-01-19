@@ -85,4 +85,3 @@ provide a beginners guide and demonstrate some more advanced features or complet
   :maxdepth: 2
 
   ./notebooks/1_Basic_Usage/1.2 QuantumState Usage.ipynb
-
